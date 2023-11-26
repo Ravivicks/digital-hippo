@@ -24,27 +24,30 @@ const NavItems = () => {
   useOnClickOutside(navRef, () => setActiveIndex(null));
 
   return (
-    <div className="flex gap-4 h-full" ref={navRef}>
-      {PRODUCT_CATEGORIES.map((category, i) => {
-        const handleOpen = () => {
-          if (activeIndex === i) {
-            setActiveIndex(null);
-          } else {
-            setActiveIndex(i);
-          }
-        };
+    <>
+      <div className="flex gap-4 h-full" ref={navRef}>
+        {PRODUCT_CATEGORIES.map((category, i) => {
+          const handleOpen = () => {
+            if (activeIndex === i) {
+              setActiveIndex(null);
+            } else {
+              setActiveIndex(i);
+            }
+          };
 
-        const isOpen = i === activeIndex;
-        return (
-          <NavItem
-            category={category}
-            handleOpen={handleOpen}
-            isOpen={isOpen}
-            isAnyOpen={isAnyOpen}
-          />
-        );
-      })}
-    </div>
+          const isOpen = i === activeIndex;
+          return (
+            <NavItem
+              category={category}
+              handleOpen={handleOpen}
+              isOpen={isOpen}
+              isAnyOpen={isAnyOpen}
+              key={i}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
 
